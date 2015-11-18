@@ -6,6 +6,8 @@ module DPLibrary
                   :documents
 
     def initialize(parameters)
+      puts "Following are parameters passed into the DPLibrary module: "
+      puts parameters
       json_response = find(parameters)
 
       response_values = super(json_response)
@@ -28,7 +30,7 @@ module DPLibrary
 
     def create_documents(document_array)
       documents = []
-
+      puts document_array
       document_array.each do |document|
         documents << Document.new(document)
       end

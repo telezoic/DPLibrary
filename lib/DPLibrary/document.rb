@@ -14,7 +14,9 @@ module DPLibrary
                     :provider,
                     :collection,
                     :original_record,
-                    :score
+                    :score,
+                    :date
+                    
 
     def initialize(response_hash={})
       set_values(response_hash)
@@ -34,10 +36,11 @@ module DPLibrary
       self.publisher = hash['sourceResource']['publisher']
       self.creator = hash['sourceResource']['creator']
       self.score = hash['score']
-
+      
       self.provider = create_provider(hash['provider'])
       self.original_record = create_original_record(hash['originalRecord'])
       self.collection = create_collection(hash['sourceResource']['collection'])
+      self.date = create_date(hash['sourceResource']['date'])
     end
 
     def create_provider(provider_hash)
@@ -50,6 +53,10 @@ module DPLibrary
 
     def create_collection(collection_response)
       collection_response.nil? ? nil : Collection.new(collection_response)
+    end
+
+    def create_date(date_response)
+      Date.new(date_response)
     end
   end
 end

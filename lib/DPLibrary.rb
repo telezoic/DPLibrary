@@ -12,6 +12,7 @@ module DPLibrary
   autoload :Document, 'DPLibrary/document'
   autoload :Provider, 'DPLibrary/provider'
   autoload :OriginalRecord, 'DPLibrary/original_record'
+  autoload :Date, 'DPLibrary/date'
 
   class << self
     attr_accessor :api_key
